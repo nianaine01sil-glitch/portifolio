@@ -1,614 +1,516 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="luxury">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio | Naiane ✨</title>
+    <meta name="description" content="Portfólio profissional de Naiane - Desenvolvedora Front-end">
+    <title>Naiane ✨ | Portfólio Profissional</title>
+    
+    <!-- Fontes & Ícones -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
     <style>
+        /* ============================================ */
+        /* 🎨 ALTERE SUAS CORES & ESTILO AQUI */
+        /* ============================================ */
         :root {
-            --primary: #d4a5ff;
-            --primary-glow: #b388ff;
-            --accent: #ffd1dc;
-            --gold: #fbbf24;
-            --dark: #0a0714;
-            --dark-alt: #151025;
-            --card-bg: rgba(30, 25, 55, 0.75);
-            --text: #f5f3ff;
-            --text-muted: #c4b5d9;
-            --radius: 20px;
-            --glow: 0 0 30px rgba(212, 165, 255, 0.25);
+            --color-primary: #7c3aed;
+            --color-primary-light: #a78bfa;
+            --color-primary-dark: #6d28d9;
+            --color-accent: #06b6d4;
+            --color-gold: #fbbf24;
+            --bg-body: #0f0d1a;
+            --bg-surface: #1a172e;
+            --bg-surface-alt: #232040;
+            --text-primary: #f5f3ff;
+            --text-secondary: #c4b5d9;
+            --text-muted: #9888b4;
+            --border-color: rgba(124, 58, 237, 0.25);
+            --border-radius: 16px;
+            --shadow-md: 0 8px 25px rgba(0,0,0,0.4);
+            --shadow-lg: 0 20px 50px rgba(0,0,0,0.5);
+            --glow-primary: 0 0 30px rgba(124, 58, 237, 0.35);
+            --transition: 0.3s ease;
+            --font-main: 'Inter', system-ui, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: var(--dark);
-            color: var(--text);
-            overflow-x: hidden;
-            min-height: 100vh;
-            line-height: 1.6;
+        /* Temas Pré-definidos (troque via painel ou alterando data-theme no HTML) */
+        [data-theme="professional"] {
+            --color-primary: #2563eb; --color-primary-light: #60a5fa; --color-primary-dark: #1d4ed8;
+            --color-accent: #0ea5e9; --color-gold: #f59e0b;
+            --bg-body: #0c1424; --bg-surface: #152238; --bg-surface-alt: #1e2f4a;
+            --text-primary: #f1f5f9; --text-secondary: #cbd5e1; --text-muted: #94a3b8;
+            --border-color: rgba(37, 99, 235, 0.3);
+        }
+        [data-theme="light"] {
+            --color-primary: #6366f1; --color-primary-light: #818cf8; --color-primary-dark: #4f46e5;
+            --color-accent: #14b8a6; --color-gold: #d97706;
+            --bg-body: #fafafa; --bg-surface: #ffffff; --bg-surface-alt: #f3f4f6;
+            --text-primary: #1f2937; --text-secondary: #4b5563; --text-muted: #6b7280;
+            --border-color: rgba(99, 102, 241, 0.2);
+            --shadow-md: 0 8px 25px rgba(0,0,0,0.1); --shadow-lg: 0 20px 50px rgba(0,0,0,0.15);
+        }
+        [data-theme="dark-elegant"] {
+            --color-primary: #8b5cf6; --color-primary-light: #a78bfa; --color-primary-dark: #7c3aed;
+            --color-accent: #f472b6; --color-gold: #fbbf24;
+            --bg-body: #0a0a0f; --bg-surface: #12121a; --bg-surface-alt: #1a1a25;
+            --text-primary: #ffffff; --text-secondary: #d1d5db; --text-muted: #9ca3af;
+            --border-color: rgba(139, 92, 246, 0.35);
+            --glow-primary: 0 0 40px rgba(139, 92, 246, 0.4);
+        }
+        [data-theme="vibrant"] {
+            --color-primary: #f97316; --color-primary-light: #fb923c; --color-primary-dark: #ea580c;
+            --color-accent: #22d3ee; --color-gold: #fcd34d;
+            --bg-body: #0f172a; --bg-surface: #1e293b; --bg-surface-alt: #334155;
+            --text-primary: #f8fafc; --text-secondary: #e2e8f0; --text-muted: #cbd5e1;
+            --border-color: rgba(249, 115, 22, 0.4);
         }
 
-        /* === BACKGROUND LUXO === */
-        .bg-luxury {
-            position: fixed; inset: 0; z-index: -1;
-            background: 
-                radial-gradient(ellipse at 20% 15%, rgba(212,165,255,.12) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 85%, rgba(255,209,220,.1) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 50%, rgba(251,191,36,.08) 0%, transparent 60%),
-                linear-gradient(180deg, var(--dark) 0%, var(--dark-alt) 100%);
-        }
+        /* === RESET & BASE === */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+        body { font-family: var(--font-main); background: var(--bg-body); color: var(--text-primary); line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+        img { max-width: 100%; height: auto; display: block; }
+        a { color: inherit; text-decoration: none; transition: color var(--transition); }
+        ul { list-style: none; }
+        button { font-family: inherit; cursor: pointer; border: none; background: none; }
 
-        .particles {
-            position: fixed; inset: 0; z-index: -1; pointer-events: none;
-            background-image: 
-                radial-gradient(2px 2px at 20px 30px, rgba(212,165,255,.4), transparent),
-                radial-gradient(2px 2px at 40px 70px, rgba(255,209,220,.3), transparent),
-                radial-gradient(2px 2px at 50px 160px, rgba(251,191,36,.35), transparent),
-                radial-gradient(2px 2px at 90px 40px, rgba(212,165,255,.3), transparent),
-                radial-gradient(2px 2px at 130px 80px, rgba(255,209,220,.4), transparent);
-            background-size: 200px 200px;
-            animation: sparkle 20s linear infinite;
-            opacity: .6;
-        }
-        @keyframes sparkle {
-            0% { background-position: 0 0, 0 0, 0 0, 0 0, 0 0; }
-            100% { background-position: 200px 200px, 150px 100px, 100px 250px, 250px 150px, 50px 300px; }
-        }
+        /* === UTILITÁRIOS === */
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+        .section { padding: 6rem 0; }
+        .section-title { font-size: 2.25rem; font-weight: 700; text-align: center; margin-bottom: 3.5rem; position: relative; display: inline-block; left: 50%; transform: translateX(-50%); }
+        .section-title::after { content: ''; position: absolute; bottom: -12px; left: 50%; transform: translateX(-50%); width: 70px; height: 4px; border-radius: 4px; background: linear-gradient(90deg, var(--color-primary), var(--color-accent)); }
+        .text-gradient { background: linear-gradient(135deg, var(--color-primary-light), var(--color-accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .text-center { text-align: center; } .mt-2 { margin-top: 2rem; } .mb-2 { margin-bottom: 2rem; }
+
+        /* === BACKGROUND === */
+        .bg-animated { position: fixed; inset: 0; z-index: -2; background: radial-gradient(ellipse at 20% 15%, rgba(124,58,237,.08) 0%, transparent 50%), radial-gradient(ellipse at 80% 85%, rgba(6,182,212,.06) 0%, transparent 50%), radial-gradient(ellipse at 50% 50%, rgba(251,191,36,.04) 0%, transparent 60%); }
+        .particles { position: fixed; inset: 0; z-index: -1; pointer-events: none; background-image: radial-gradient(1.5px 1.5px at 30px 50px, rgba(124,58,237,.5), transparent); background-size: 100px 100px; opacity: .4; animation: float 30s linear infinite; }
+        @keyframes float { to { background-position: 1000px 1000px; } }
 
         /* === NAVBAR === */
-        .navbar {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-            padding: 1.2rem 2rem;
-            background: rgba(10, 7, 20, 0.9);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(212, 165, 255, 0.2);
-            transition: all 0.3s ease;
-        }
-        .navbar.scrolled { padding: 0.7rem 2rem; box-shadow: var(--glow); }
-
-        .nav-inner {
-            max-width: 1200px; margin: auto;
-            display: flex; justify-content: space-between; align-items: center;
-        }
-
-        .logo {
-            font-weight: 700; font-size: 1.5rem; letter-spacing: -0.5px;
-            background: linear-gradient(135deg, var(--primary), var(--gold));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            display: flex; align-items: center; gap: 0.5rem;
-        }
-        .logo i { font-size: 1.2rem; }
-
-        .nav-links { display: flex; gap: 2rem; list-style: none; }
-        .nav-links a {
-            color: var(--text-muted); font-weight: 500; font-size: .95rem;
-            position: relative; transition: color .3s;
-        }
-        .nav-links a::after {
-            content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px;
-            background: linear-gradient(90deg, var(--primary), var(--gold)); transition: width .3s;
-        }
-        .nav-links a:hover { color: var(--text); }
-        .nav-links a:hover::after { width: 100%; }
-
-        .menu-btn { display: none; background: none; border: none; color: var(--text); font-size: 1.6rem; cursor: pointer; }
+        .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 1rem 0; transition: all var(--transition); background: rgba(15, 13, 26, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border-color); }
+        .navbar.scrolled { padding: 0.5rem 0; box-shadow: var(--shadow-md); }
+        .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: 700; font-size: 1.4rem; display: flex; align-items: center; gap: 0.5rem; }
+        .logo i { color: var(--color-gold); }
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a { font-weight: 500; font-size: 0.95rem; color: var(--text-secondary); position: relative; padding: 0.5rem 0; }
+        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: linear-gradient(90deg, var(--color-primary), var(--color-accent)); transition: width var(--transition); }
+        .nav-links a:hover, .nav-links a.active { color: var(--text-primary); }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+        .nav-actions { display: flex; align-items: center; gap: 1rem; }
+        .theme-toggle { width: 40px; height: 40px; border-radius: 50%; background: var(--bg-surface); border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; color: var(--text-secondary); transition: all var(--transition); }
+        .theme-toggle:hover { color: var(--color-primary); border-color: var(--color-primary); transform: rotate(15deg); }
+        .menu-btn { display: none; font-size: 1.5rem; color: var(--text-primary); }
 
         /* === HERO === */
-        .hero {
-            min-height: 100vh; display: flex; align-items: center; justify-content: center;
-            padding: 8rem 2rem 4rem; position: relative;
-        }
+        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 8rem 0 4rem; }
+        .hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; max-width: 1100px; margin: auto; }
+        .hero-content .badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1.2rem; border-radius: 50px; margin-bottom: 1.5rem; font-family: var(--font-mono); font-size: 0.85rem; font-weight: 600; background: linear-gradient(135deg, rgba(124,58,237,.2), rgba(6,182,212,.15)); border: 1px solid var(--border-color); color: var(--color-primary-light); animation: pulse 2s ease-in-out infinite; }
+        @keyframes pulse { 0%,100%{box-shadow:0 0 0 0 rgba(124,58,237,.4)} 50%{box-shadow:0 0 0 12px rgba(124,58,237,0)} }
+        .hero-content h1 { font-size: 2.75rem; font-weight: 700; line-height: 1.2; margin-bottom: 1rem; }
+        .hero-content .subtitle { font-size: 1.25rem; color: var(--text-secondary); margin-bottom: 2rem; }
+        .hero-content .subtitle span { color: var(--color-accent); font-weight: 600; }
+        .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .btn { padding: 0.9rem 2rem; border-radius: 50px; font-weight: 600; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 0.5rem; transition: all var(--transition); }
+        .btn-primary { background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark)); color: #fff; box-shadow: var(--shadow-md), 0 0 20px rgba(124,58,237,.3); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg), 0 0 30px rgba(124,58,237,.5); }
+        .btn-outline { background: transparent; border: 2px solid var(--color-primary); color: var(--color-primary); }
+        .btn-outline:hover { background: rgba(124,58,237,.1); transform: translateY(-3px); }
+        .social-hero { display: flex; gap: 1rem; margin-top: 2rem; }
+        .social-hero a { width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--bg-surface); border: 1px solid var(--border-color); color: var(--text-secondary); transition: all var(--transition); }
+        .social-hero a:hover { background: var(--color-primary); color: #fff; border-color: var(--color-primary); transform: translateY(-3px); }
 
-        .hero-inner {
-            max-width: 1100px; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
-        }
-
-        .hero-text .tag {
-            display: inline-flex; align-items: center; gap: 0.5rem;
-            padding: .5rem 1.2rem; border-radius: 50px;
-            font-family: 'JetBrains Mono', monospace; font-size: .85rem; font-weight: 600;
-            background: linear-gradient(135deg, rgba(251,191,36,.2), rgba(212,165,255,.2));
-            color: var(--gold); border: 1px solid rgba(251,191,36,.4);
-            margin-bottom: 1.2rem; animation: pulse 2s ease-in-out infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(251,191,36,.4); }
-            50% { box-shadow: 0 0 0 12px rgba(251,191,36,0); }
-        }
-
-        .hero-text h1 { font-size: 2.8rem; line-height: 1.15; margin-bottom: 1rem; }
-        .hero-text h1 span {
-            background: linear-gradient(135deg, var(--primary), var(--gold));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-        .hero-text .typing { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 2rem; }
-        .hero-text .typing span { color: var(--primary); font-weight: 600; }
-
-        .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
-
-        .btn {
-            padding: .85rem 1.8rem; border-radius: 50px; font-weight: 600; cursor: pointer;
-            border: none; transition: .3s; display: inline-flex; align-items: center; gap: .5rem;
-            font-size: .95rem; text-decoration: none;
-        }
-        .btn-grad {
-            background: linear-gradient(135deg, var(--primary), var(--gold));
-            color: var(--dark); box-shadow: 0 4px 20px rgba(212,165,255,.4);
-        }
-        .btn-grad:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(212,165,255,.6); }
-        .btn-outline {
-            background: transparent; border: 2px solid var(--primary); color: var(--primary);
-        }
-        .btn-outline:hover { background: rgba(212,165,255,.15); transform: translateY(-3px); }
-
-        /* === FOTO DE PERFIL COM UPLOAD === */
-        .hero-photo { display: flex; justify-content: center; align-items: center; position: relative; }
-        .photo-frame {
-            position: relative; width: 320px; height: 320px;
-            display: flex; justify-content: center; align-items: center;
-        }
-        .photo-frame::before {
-            content: ''; position: absolute; inset: -8px; border-radius: 50%;
-            background: conic-gradient(var(--primary), var(--gold), var(--accent), var(--primary));
-            animation: spin 4s linear infinite; filter: blur(2px); opacity: .8;
-        }
+        /* === FOTO === */
+        .hero-image { display: flex; justify-content: center; align-items: center; }
+        .photo-wrapper { position: relative; width: 320px; height: 320px; }
+        .photo-ring { position: absolute; inset: -10px; border-radius: 50%; background: conic-gradient(var(--color-primary), var(--color-accent), var(--color-gold), var(--color-primary)); animation: spin 4s linear infinite; filter: blur(3px); opacity: .7; }
         @keyframes spin { to { transform: rotate(360deg); } }
+        .photo-container { position: relative; z-index: 2; width: 300px; height: 300px; border-radius: 50%; overflow: hidden; border: 5px solid var(--bg-body); box-shadow: var(--shadow-lg); }
+        .photo-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+        .photo-container:hover img { transform: scale(1.05); }
+        .photo-upload { position: absolute; bottom: 25px; right: 25px; z-index: 3; width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, var(--color-gold), #f59e0b); color: var(--bg-body); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; box-shadow: var(--shadow-md); transition: all var(--transition); }
+        .photo-upload:hover { transform: scale(1.1) rotate(10deg); box-shadow: 0 0 25px rgba(251,191,36,.6); }
+        .photo-dots { position: absolute; inset: -35px; border-radius: 50%; z-index: 1; background-image: radial-gradient(rgba(124,58,237,.3) 1px, transparent 1px); background-size: 18px 18px; animation: rotate 25s linear infinite; }
+        @keyframes rotate { to { transform: rotate(360deg); } }
 
-        .photo-frame img {
-            position: relative; z-index: 2; width: 300px; height: 300px;
-            border-radius: 50%; object-fit: cover; border: 5px solid var(--dark);
-            transition: opacity 0.4s ease, transform 0.4s ease;
-            box-shadow: 0 10px 40px rgba(0,0,0,.5);
-        }
+        /* === CARDS & GRID === */
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+        .card { background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--border-radius); padding: 1.8rem; transition: all var(--transition); backdrop-filter: blur(10px); }
+        .card:hover { transform: translateY(-6px); border-color: var(--color-primary); box-shadow: var(--shadow-lg), var(--glow-primary); }
+        .card-icon { width: 50px; height: 50px; border-radius: 12px; background: linear-gradient(135deg, var(--color-primary), var(--color-accent)); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.3rem; margin-bottom: 1.2rem; }
+        .card h3 { font-size: 1.2rem; margin-bottom: 0.8rem; }
+        .card p { color: var(--text-secondary); font-size: 0.95rem; }
+        .skills-container { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+        .skill-tag { padding: 0.5rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 500; background: rgba(124,58,237,.12); color: var(--color-primary-light); border: 1px solid var(--border-color); transition: all var(--transition); }
+        .skill-tag:hover { background: var(--color-primary); color: #fff; border-color: var(--color-primary); transform: translateY(-2px); }
 
-        /* Botão de upload */
-        .photo-upload-btn {
-            position: absolute; bottom: 20px; right: 20px; z-index: 3;
-            width: 52px; height: 52px; border-radius: 50%;
-            background: linear-gradient(135deg, var(--gold), #f59e0b);
-            color: var(--dark); display: flex; align-items: center; justify-content: center;
-            cursor: pointer; border: 4px solid var(--dark);
-            box-shadow: 0 6px 20px rgba(251,191,36,.5); transition: .3s;
-            font-size: 1.3rem;
-        }
-        .photo-upload-btn:hover { transform: scale(1.15) rotate(10deg); box-shadow: 0 8px 25px rgba(251,191,36,.7); }
-        .photo-upload-btn:active { transform: scale(1.05); }
+        /* === PROJECTS === */
+        .project-card { overflow: hidden; padding: 0; }
+        .project-image { width: 100%; height: 200px; object-fit: cover; transition: transform 0.5s ease; }
+        .project-card:hover .project-image { transform: scale(1.08); }
+        .project-content { padding: 1.5rem; }
+        .project-tags { display: flex; gap: 0.5rem; margin: 0.8rem 0; flex-wrap: wrap; }
+        .project-tags span { padding: 0.25rem 0.7rem; border-radius: 50px; font-size: 0.75rem; background: var(--bg-surface-alt); color: var(--text-secondary); }
+        .project-links { display: flex; gap: 1rem; margin-top: 1rem; }
+        .project-links a { font-size: 0.9rem; font-weight: 500; display: flex; align-items: center; gap: 0.3rem; color: var(--color-primary); }
+        .project-links a:hover { color: var(--color-accent); }
 
-        .photo-dots {
-            position: absolute; inset: -40px; z-index: 1;
-            background-image: radial-gradient(rgba(212,165,255,.3) 1px, transparent 1px);
-            background-size: 20px 20px; border-radius: 50%;
-            animation: rotateDots 30s linear infinite;
-        }
-        @keyframes rotateDots { to { transform: rotate(360deg); } }
+        /* === TIMELINE === */
+        .timeline { position: relative; padding-left: 2rem; }
+        .timeline::before { content: ''; position: absolute; left: 7px; top: 10px; bottom: 10px; width: 3px; background: linear-gradient(180deg, var(--color-primary), var(--color-accent)); border-radius: 4px; }
+        .timeline-item { position: relative; padding-left: 2rem; margin-bottom: 2rem; }
+        .timeline-item::before { content: ''; position: absolute; left: -1px; top: 8px; width: 18px; height: 18px; background: var(--bg-surface); border: 3px solid var(--color-primary); border-radius: 50%; box-shadow: 0 0 0 4px var(--bg-body); }
+        .timeline-date { font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-accent); margin-bottom: 0.3rem; }
+        .timeline-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.3rem; }
+        .timeline-company { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 0.6rem; }
+        .timeline-desc { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
 
-        .badge {
-            position: absolute; z-index: 2; background: var(--dark-alt);
-            border: 1px solid rgba(212,165,255,.4); border-radius: 14px;
-            padding: .6rem 1.1rem; display: flex; align-items: center; gap: .5rem;
-            box-shadow: 0 4px 20px rgba(0,0,0,.4); animation: floatBadge 3s ease-in-out infinite;
-            font-size: .85rem; font-weight: 600;
-        }
-        .badge i { font-size: 1.1rem; }
-        .badge-top { top: 5%; right: -5%; animation-delay: 0s; }
-        .badge-bottom { bottom: 5%; left: -5%; animation-delay: 1.5s; }
-        @keyframes floatBadge {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-12px); }
-        }
-
-        /* === SEÇÕES === */
-        .section { max-width: 1100px; margin: auto; padding: 5rem 2rem; }
-        .section-title {
-            text-align: center; margin-bottom: 3rem; font-size: 2rem; position: relative;
-        }
-        .section-title::after {
-            content: ''; position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%);
-            width: 70px; height: 4px; border-radius: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--gold));
-        }
-
-        /* === SOBRE === */
-        .about-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 2.5rem; align-items: start; }
-        .about-text p { color: var(--text-muted); margin-bottom: 1rem; }
-        .skills { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.5rem; }
-        .skill {
-            padding: .5rem 1.1rem; border-radius: 50px; font-size: .85rem; font-weight: 500;
-            background: rgba(212,165,255,.12); color: var(--primary);
-            border: 1px solid rgba(212,165,255,.3); transition: .3s;
-        }
-        .skill:hover { transform: translateY(-3px) scale(1.05); background: rgba(212,165,255,.25); box-shadow: 0 4px 15px rgba(212,165,255,.25); }
-
-        .stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-        .stat-card {
-            background: var(--card-bg); border: 1px solid rgba(212,165,255,.2);
-            border-radius: var(--radius); padding: 1.5rem; text-align: center;
-            backdrop-filter: blur(10px); transition: .3s;
-        }
-        .stat-card:hover { border-color: var(--gold); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(251,191,36,.15); }
-        .stat-card .num { font-size: 2rem; font-weight: 700; background: linear-gradient(135deg, var(--primary), var(--gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .stat-card .label { font-size: .8rem; color: var(--text-muted); margin-top: .3rem; }
-
-        /* === PROJETOS === */
-        .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; }
-        .project-card {
-            background: var(--card-bg); border: 1px solid rgba(212,165,255,.15);
-            border-radius: var(--radius); overflow: hidden; backdrop-filter: blur(10px);
-            transition: .4s; opacity: 0; transform: translateY(40px);
-        }
-        .project-card.show { opacity: 1; transform: translateY(0); }
-        .project-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,.4); border-color: var(--primary); }
-        .project-img { width: 100%; height: 180px; object-fit: cover; }
-        .project-body { padding: 1.5rem; }
-        .project-body h3 { font-size: 1.1rem; margin-bottom: .5rem; }
-        .project-body p { font-size: .9rem; color: var(--text-muted); margin-bottom: 1rem; }
-        .tags { display: flex; gap: .4rem; margin-bottom: 1rem; flex-wrap: wrap; }
-        .tags span {
-            padding: .2rem .7rem; border-radius: 50px; font-size: .7rem; font-weight: 500;
-            background: rgba(255,209,220,.15); color: var(--accent); border: 1px solid rgba(255,209,220,.3);
-        }
-        .project-links { display: flex; gap: 1rem; }
-        .project-links a { color: var(--primary); font-weight: 600; font-size: .9rem; display: flex; align-items: center; gap: .4rem; transition: color .3s; }
-        .project-links a:hover { color: var(--gold); }
-
-        /* === GITHUB CARD ESPECIAL === */
-        .github-card {
-            background: linear-gradient(135deg, rgba(212,165,255,.1), rgba(251,191,36,.08));
-            border: 2px solid rgba(212,165,255,.4); border-radius: var(--radius);
-            padding: 1.8rem; text-align: center; margin-top: 2rem;
-        }
-        .github-card .repo-name { font-size: 1.3rem; font-weight: 700; margin: .5rem 0; color: var(--text); }
-        .github-card .lang { display: inline-flex; align-items: center; gap: .4rem; font-size: .85rem; color: var(--text-muted); }
-        .github-card .lang i { color: #f1e05a; }
-
-        /* === CONTATO === */
-        .contact-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 3rem; align-items: start; }
+        /* === CONTACT === */
+        .contact-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem; }
         .contact-form { display: flex; flex-direction: column; gap: 1rem; }
-        .contact-form input, .contact-form textarea {
-            padding: 1rem; border-radius: 12px; border: 1px solid rgba(212,165,255,.2);
-            background: var(--card-bg); color: var(--text); font-family: inherit; font-size: .95rem;
-            transition: .3s; outline: none;
-        }
-        .contact-form input:focus, .contact-form textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(212,165,255,.15); }
-        .contact-form textarea { resize: vertical; min-height: 130px; }
-
-        .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
-        .info-item {
-            display: flex; align-items: center; gap: 1rem;
-            background: var(--card-bg); border: 1px solid rgba(212,165,255,.15);
-            border-radius: 12px; padding: 1rem 1.2rem; backdrop-filter: blur(10px); transition: .3s;
-        }
-        .info-item:hover { border-color: var(--gold); transform: translateX(5px); }
-        .info-item .icon {
-            width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center;
-            background: linear-gradient(135deg, var(--primary), var(--gold)); font-size: 1.1rem; color: var(--dark); font-weight: 700;
-        }
-        .info-item .details span { display: block; }
-        .info-item .details .label { font-size: .75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
-        .info-item .details .value { font-weight: 500; font-size: .95rem; }
-
-        .social-row { display: flex; gap: 1rem; margin-top: 1rem; }
-        .social-btn {
-            width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            background: var(--card-bg); border: 1px solid rgba(212,165,255,.2); color: var(--text-muted);
-            font-size: 1.2rem; transition: .3s;
-        }
-        .social-btn:hover { background: linear-gradient(135deg, var(--primary), var(--gold)); color: var(--dark); transform: translateY(-5px) rotate(8deg); box-shadow: 0 8px 20px rgba(212,165,255,.4); border-color: transparent; }
+        .form-group input, .form-group textarea { width: 100%; padding: 1rem 1.2rem; border-radius: 12px; background: var(--bg-surface); border: 1px solid var(--border-color); color: var(--text-primary); font-family: inherit; font-size: 1rem; transition: all var(--transition); }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--color-primary); box-shadow: 0 0 0 3px rgba(124,58,237,.2); }
+        .form-group textarea { min-height: 140px; resize: vertical; }
+        .contact-info { display: flex; flex-direction: column; gap: 1.2rem; }
+        .contact-item { display: flex; align-items: center; gap: 1rem; padding: 1rem; background: var(--bg-surface); border-radius: 12px; border: 1px solid var(--border-color); transition: var(--transition); }
+        .contact-item:hover { border-color: var(--color-primary); transform: translateX(5px); }
+        .contact-icon { width: 44px; height: 44px; border-radius: 10px; background: linear-gradient(135deg, var(--color-primary), var(--color-accent)); display: flex; align-items: center; justify-content: center; color: #fff; }
+        .contact-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+        .contact-value { font-weight: 500; font-size: 0.95rem; }
 
         /* === FOOTER === */
-        footer {
-            text-align: center; padding: 2rem; border-top: 1px solid rgba(212,165,255,.15);
-            color: var(--text-muted); font-size: .85rem; margin-top: 2rem;
-        }
+        .footer { text-align: center; padding: 2.5rem 0; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.9rem; margin-top: 3rem; }
+        .footer-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1rem; }
+        .footer-links a:hover { color: var(--color-primary); }
 
-        /* === RESPONSIVO === */
+        /* === ANIMATIONS === */
+        .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* === RESPONSIVE === */
         @media (max-width: 900px) {
-            .hero-inner { grid-template-columns: 1fr; text-align: center; }
-            .hero-btns { justify-content: center; }
-            .hero-photo { order: -1; }
-            .photo-frame { width: 260px; height: 260px; }
-            .photo-frame img { width: 240px; height: 240px; }
-            .badge { display: none; }
-            .about-grid, .contact-grid { grid-template-columns: 1fr; }
-            .nav-links {
-                position: fixed; top: 70px; right: -100%; width: 260px; height: calc(100vh - 70px);
-                background: var(--dark-alt); flex-direction: column; padding: 2rem; gap: 1.5rem;
-                transition: right .3s; border-left: 1px solid rgba(212,165,255,.2);
-            }
+            .hero-inner { grid-template-columns: 1fr; text-align: center; gap: 3rem; }
+            .hero-content .badge { margin: 0 auto 1.5rem; }
+            .hero-buttons, .social-hero { justify-content: center; }
+            .hero-image { order: -1; }
+            .photo-wrapper { width: 260px; height: 260px; }
+            .photo-container { width: 240px; height: 240px; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .nav-links { position: fixed; top: 70px; right: -100%; width: 280px; height: calc(100vh - 70px); background: var(--bg-surface); flex-direction: column; padding: 2rem; gap: 1.5rem; transition: right var(--transition); border-left: 1px solid var(--border-color); }
             .nav-links.open { right: 0; }
             .menu-btn { display: block; }
+            .nav-actions { gap: 0.5rem; }
         }
+        @media (max-width: 480px) {
+            .section { padding: 4rem 0; } .section-title { font-size: 1.875rem; } .hero-content h1 { font-size: 2.25rem; } .photo-wrapper { width: 220px; height: 220px; } .photo-container { width: 200px; height: 200px; } .btn { padding: 0.8rem 1.6rem; font-size: 0.9rem; }
+        }
+        ::-webkit-scrollbar { width: 10px; } ::-webkit-scrollbar-track { background: var(--bg-body); } ::-webkit-scrollbar-thumb { background: var(--color-primary); border-radius: 5px; } ::-webkit-scrollbar-thumb:hover { background: var(--color-primary-dark); }
 
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--dark); }
-        ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 4px; }
+        /* === THEME PANEL === */
+        .theme-panel { position: fixed; bottom: 20px; right: 20px; z-index: 999; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 16px; padding: 1rem; box-shadow: var(--shadow-lg); display: flex; flex-direction: column; gap: 0.8rem; min-width: 200px; }
+        .theme-panel-header { display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.5rem; }
+        .theme-options { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
+        .theme-option { padding: 0.5rem; border-radius: 8px; font-size: 0.8rem; text-align: center; background: var(--bg-surface-alt); border: 2px solid transparent; cursor: pointer; transition: all var(--transition); }
+        .theme-option:hover, .theme-option.active { border-color: var(--color-primary); }
+        .theme-option[data-value="luxury"] { background: linear-gradient(135deg, #7c3aed, #06b6d4); color: #fff; }
+        .theme-option[data-value="professional"] { background: linear-gradient(135deg, #2563eb, #0ea5e9); color: #fff; }
+        .theme-option[data-value="light"] { background: linear-gradient(135deg, #6366f1, #14b8a6); color: #1f2937; }
+        .theme-option[data-value="dark-elegant"] { background: linear-gradient(135deg, #8b5cf6, #f472b6); color: #fff; }
+        .theme-option[data-value="vibrant"] { background: linear-gradient(135deg, #f97316, #22d3ee); color: #fff; }
     </style>
 </head>
 <body>
-    <div class="bg-luxury"></div>
+    <div class="bg-animated"></div>
     <div class="particles"></div>
 
-    <!-- NAVBAR -->
     <nav class="navbar" id="navbar">
-        <div class="nav-inner">
-            <div class="logo"><i class="fas fa-crown"></i> Naiane</div>
+        <div class="container nav-inner">
+            <a href="#" class="logo"><i class="fas fa-crown"></i> Naiane</a>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#inicio">Início</a></li>
+                <li><a href="#inicio" class="active">Início</a></li>
                 <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#habilidades">Habilidades</a></li>
                 <li><a href="#projetos">Projetos</a></li>
+                <li><a href="#experiencia">Experiência</a></li>
                 <li><a href="#contato">Contato</a></li>
             </ul>
-            <button class="menu-btn" id="menuBtn">☰</button>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" title="Alterar tema"><i class="fas fa-palette"></i></button>
+                <button class="menu-btn" id="menuBtn">☰</button>
+            </div>
         </div>
     </nav>
 
-    <!-- HERO -->
     <section class="hero" id="inicio">
-        <div class="hero-inner">
-            <div class="hero-text">
-                <!-- 💸 SEU TEXTO PERSONALIZADO -->
-                <span class="tag"><i class="fas fa-gem"></i> Sim, eu sou rica ✨</span>
-                <h1>Olá, eu sou <span>Naiane</span></h1>
-                <p class="typing">Criando com <span id="typed"></span></p>
-                <div class="hero-btns">
-                    <a href="#projetos" class="btn btn-grad"><i class="fas fa-rocket"></i> Ver Projetos</a>
+        <div class="container hero-inner">
+            <div class="hero-content">
+                <span class="badge"><i class="fas fa-gem"></i> Sim, eu sou rica ✨</span>
+                <h1>Olá, eu sou <span class="text-gradient">Naiane</span></h1>
+                <p class="subtitle">Transformo ideias em <span id="typed">código</span> com elegância e performance</p>
+                <div class="hero-buttons">
+                    <a href="#projetos" class="btn btn-primary"><i class="fas fa-rocket"></i> Ver Projetos</a>
                     <a href="#contato" class="btn btn-outline"><i class="fas fa-envelope"></i> Contato</a>
                 </div>
+                <div class="social-hero">
+                    <a href="https://github.com/nianaine01sil-glitch" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
             </div>
-
-            <div class="hero-photo">
-                <div class="photo-dots"></div>
-                <div class="photo-frame">
-                    <!-- 📷 SUA FOTO (persiste no localStorage) -->
-                    <img id="profileImg" src="https://i.pravatar.cc/300?img=47" alt="Naiane">
-                    
-                    <!-- Botão para trocar foto -->
-                    <label for="photoInput" class="photo-upload-btn" title="Clique para trocar sua foto">
-                        <i class="fas fa-camera"></i>
-                    </label>
+            <div class="hero-image">
+                <div class="photo-wrapper">
+                    <div class="photo-ring"></div><div class="photo-dots"></div>
+                    <div class="photo-container">
+                        <img id="profileImg" src="https://i.pravatar.cc/300?img=47" alt="Naiane">
+                    </div>
+                    <label for="photoInput" class="photo-upload"><i class="fas fa-camera"></i></label>
                     <input type="file" id="photoInput" accept="image/*" hidden>
                 </div>
-                
-                <!-- Badges decorativos -->
-                <div class="badge badge-top"><i class="fas fa-code" style="color: var(--primary)"></i> Dev</div>
-                <div class="badge badge-bottom"><i class="fas fa-chart-line" style="color: var(--gold)"></i> Sucesso</div>
             </div>
         </div>
     </section>
 
-    <!-- SOBRE -->
     <section class="section" id="sobre">
-        <h2 class="section-title">Sobre Mim</h2>
-        <div class="about-grid">
-            <div class="about-text">
-                <p>Sou <strong>Naiane</strong>, desenvolvedora apaixonada por criar experiências digitais elegantes e funcionais. Com foco em HTML e boas práticas, transformo ideias em código limpo e visualmente impactante.</p>
-                <p>Gosto de trabalhar com autonomia, entregar excelência e investir no meu crescimento profissional. Quando não estou codando, estou explorando novas tendências tech e cuidando do meu estilo de vida premium. 💎</p>
-                <div class="skills">
-                    <span class="skill">HTML5</span>
-                    <span class="skill">CSS3</span>
-                    <span class="skill">JavaScript</span>
-                    <span class="skill">Git</span>
-                    <span class="skill">GitHub</span>
-                    <span class="skill">Figma</span>
-                    <span class="skill">UI Design</span>
+        <div class="container">
+            <h2 class="section-title">Sobre Mim</h2>
+            <div class="grid-2">
+                <div class="card fade-in">
+                    <p style="margin-bottom: 1rem;">Sou <strong>Naiane</strong>, desenvolvedora front-end apaixonada por criar experiências digitais que unem estética impecável e funcionalidade excepcional. Com foco em HTML, CSS e JavaScript, transformo conceitos em interfaces que encantam e convertem.</p>
+                    <p style="color: var(--text-muted);">Acredito que código limpo e design pensado são a base de produtos digitais de sucesso. Quando não estou codando, estou explorando novas tendências de UI, investindo no meu desenvolvimento e cuidando do meu estilo de vida premium. 💎</p>
+                </div>
+                <div class="grid-2 fade-in">
+                    <div class="card text-center"><div class="card-icon"><i class="fas fa-code"></i></div><div class="num" data-target="12">0</div><div style="color: var(--text-muted); font-size: 0.9rem;">Projetos</div></div>
+                    <div class="card text-center"><div class="card-icon"><i class="fas fa-clock"></i></div><div class="num" data-target="3">0</div><div style="color: var(--text-muted); font-size: 0.9rem;">Anos Exp.</div></div>
+                    <div class="card text-center"><div class="card-icon"><i class="fas fa-check-circle"></i></div><div class="num" data-target="200">0</div><div style="color: var(--text-muted); font-size: 0.9rem;">Commits</div></div>
+                    <div class="card text-center"><div class="card-icon"><i class="fas fa-award"></i></div><div class="num" data-target="7">0</div><div style="color: var(--text-muted); font-size: 0.9rem;">Certificados</div></div>
                 </div>
             </div>
-            <div class="stats">
-                <div class="stat-card"><div class="num" data-target="8">0</div><div class="label">Projetos</div></div>
-                <div class="stat-card"><div class="num" data-target="2">0</div><div class="label">Anos Exp.</div></div>
-                <div class="stat-card"><div class="num" data-target="150">0</div><div class="label">Commits</div></div>
-                <div class="stat-card"><div class="num" data-target="5">0</div><div class="label">Certificados</div></div>
-            </div>
-        </div>
-
-        <!-- Card especial do GitHub -->
-        <div class="github-card">
-            <i class="fab fa-github" style="font-size: 2rem; color: var(--text);"></i>
-            <div class="repo-name">naiane</div>
-            <p style="color: var(--text-muted); font-size: .9rem; margin: .5rem 0;">Repositório principal</p>
-            <div class="lang"><i class="fas fa-circle"></i> HTML</div>
-            <a href="https://github.com/nianaine01sil-glitch/naiane" target="_blank" class="btn btn-outline" style="margin-top: 1rem; font-size: .9rem;">
-                <i class="fab fa-github"></i> Ver no GitHub
-            </a>
         </div>
     </section>
 
-    <!-- PROJETOS -->
+    <section class="section" id="habilidades" style="background: var(--bg-surface-alt);">
+        <div class="container">
+            <h2 class="section-title">Habilidades</h2>
+            <div class="grid-3">
+                <div class="card fade-in"><div class="card-icon"><i class="fab fa-html5"></i></div><h3>Front-end</h3><p>HTML5, CSS3, JavaScript ES6+, Responsive Design, Acessibilidade Web</p></div>
+                <div class="card fade-in"><div class="card-icon"><i class="fas fa-palette"></i></div><h3>Design</h3><p>Figma, UI/UX Principles, Design Systems, Prototipagem, Animações CSS</p></div>
+                <div class="card fade-in"><div class="card-icon"><i class="fas fa-tools"></i></div><h3>Ferramentas</h3><p>Git/GitHub, VS Code, npm, Vite, Figma, Chrome DevTools</p></div>
+            </div>
+            <div class="text-center mt-2">
+                <div class="skills-container">
+                    <span class="skill-tag">HTML5</span><span class="skill-tag">CSS3</span><span class="skill-tag">JavaScript</span><span class="skill-tag">Git</span><span class="skill-tag">Figma</span><span class="skill-tag">UI Design</span><span class="skill-tag">Responsive</span><span class="skill-tag">A11y</span><span class="skill-tag">SEO</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="section" id="projetos">
-        <h2 class="section-title">Projetos</h2>
-        <div class="projects-grid">
-            <!-- Projeto 1: Seu repositório real -->
-            <div class="project-card">
-                <img class="project-img" src="https://picsum.photos/600/360?random=10" alt="naiane">
-                <div class="project-body">
-                    <h3>✨ naiane</h3>
-                    <p>Meu projeto principal no GitHub. Desenvolvido com HTML, focado em boas práticas e design limpo.</p>
-                    <div class="tags"><span>HTML</span><span>CSS</span><span>GitHub</span></div>
-                    <div class="project-links">
-                        <a href="https://github.com/nianaine01sil-glitch/naiane" target="_blank"><i class="fab fa-github"></i> Código</a>
-                        <a href="#"><i class="fas fa-external-link-alt"></i> Demo</a>
+        <div class="container">
+            <h2 class="section-title">Projetos</h2>
+            <div class="grid-3">
+                <article class="card project-card fade-in">
+                    <img class="project-image" src="https://picsum.photos/600/360?random=20" alt="Projeto naiane">
+                    <div class="project-content">
+                        <h3>✨ naiane</h3>
+                        <p>Meu repositório principal no GitHub. Desenvolvido com HTML semântico, CSS moderno e foco em boas práticas de desenvolvimento.</p>
+                        <div class="project-tags"><span>HTML</span><span>CSS</span><span>GitHub</span></div>
+                        <div class="project-links"><a href="https://github.com/nianaine01sil-glitch/naiane" target="_blank"><i class="fab fa-github"></i> Código</a><a href="#"><i class="fas fa-external-link-alt"></i> Demo</a></div>
                     </div>
-                </div>
-            </div>
-
-            <!-- Projeto 2: Template -->
-            <div class="project-card">
-                <img class="project-img" src="https://picsum.photos/600/360?random=11" alt="Portfolio Premium">
-                <div class="project-body">
-                    <h3>💎 Portfolio Premium</h3>
-                    <p>Template de portfólio luxuoso com animações, glassmorphism e design responsivo.</p>
-                    <div class="tags"><span>HTML</span><span>CSS</span><span>JS</span></div>
-                    <div class="project-links">
-                        <a href="#"><i class="fas fa-external-link-alt"></i> Demo</a>
-                        <a href="#"><i class="fab fa-github"></i> Código</a>
+                </article>
+                <article class="card project-card fade-in">
+                    <img class="project-image" src="https://picsum.photos/600/360?random=21" alt="Portfolio Premium">
+                    <div class="project-content">
+                        <h3>💎 Portfolio Premium</h3>
+                        <p>Template de portfólio com design luxuoso, animações suaves, glassmorphism e total responsividade.</p>
+                        <div class="project-tags"><span>HTML</span><span>CSS</span><span>JS</span></div>
+                        <div class="project-links"><a href="#"><i class="fas fa-external-link-alt"></i> Demo</a><a href="#"><i class="fab fa-github"></i> Código</a></div>
                     </div>
-                </div>
-            </div>
-
-            <!-- Projeto 3: Template -->
-            <div class="project-card">
-                <img class="project-img" src="https://picsum.photos/600/360?random=12" alt="Landing Page">
-                <div class="project-body">
-                    <h3>🚀 Landing Page</h3>
-                    <p>Página de conversão otimizada com animações suaves e foco em experiência do usuário.</p>
-                    <div class="tags"><span>HTML</span><span>Animations</span><span>SEO</span></div>
-                    <div class="project-links">
-                        <a href="#"><i class="fas fa-external-link-alt"></i> Demo</a>
-                        <a href="#"><i class="fab fa-github"></i> Código</a>
+                </article>
+                <article class="card project-card fade-in">
+                    <img class="project-image" src="https://picsum.photos/600/360?random=22" alt="Landing Page">
+                    <div class="project-content">
+                        <h3>🚀 Landing Page</h3>
+                        <p>Página de conversão otimizada com animações CSS, SEO técnico e foco em experiência do usuário.</p>
+                        <div class="project-tags"><span>HTML</span><span>Animations</span><span>SEO</span></div>
+                        <div class="project-links"><a href="#"><i class="fas fa-external-link-alt"></i> Demo</a><a href="#"><i class="fab fa-github"></i> Código</a></div>
                     </div>
-                </div>
+                </article>
             </div>
         </div>
     </section>
 
-    <!-- CONTATO -->
+    <section class="section" id="experiencia" style="background: var(--bg-surface-alt);">
+        <div class="container">
+            <h2 class="section-title">Experiência</h2>
+            <div class="timeline">
+                <div class="timeline-item fade-in"><div class="timeline-date">2024 — Presente</div><div class="timeline-title">Desenvolvedora Front-end</div><div class="timeline-company">🏢 Empresa Tech</div><p class="timeline-desc">Desenvolvimento de interfaces responsivas, implementação de design systems e otimização de performance web.</p></div>
+                <div class="timeline-item fade-in"><div class="timeline-date">2022 — 2024</div><div class="timeline-title">Freelancer</div><div class="timeline-company">🏢 Autônoma</div><p class="timeline-desc">Criação de sites institucionais, landing pages e manutenção de projetos para clientes diversos.</p></div>
+                <div class="timeline-item fade-in"><div class="timeline-date">2021 — 2022</div><div class="timeline-title">Estágio em Desenvolvimento</div><div class="timeline-company">🏢 Startup Digital</div><p class="timeline-desc">Aprendizado prático com HTML/CSS, versionamento com Git e participação em sprints ágeis.</p></div>
+            </div>
+        </div>
+    </section>
+
     <section class="section" id="contato">
-        <h2 class="section-title">Contato</h2>
-        <div class="contact-grid">
-            <form class="contact-form" id="contactForm">
-                <input type="text" placeholder="Seu nome" required>
-                <input type="email" placeholder="Seu e-mail" required>
-                <textarea placeholder="Sua mensagem..." required></textarea>
-                <button class="btn btn-grad" type="submit"><i class="fas fa-paper-plane"></i> Enviar</button>
-            </form>
-            <div class="contact-info">
-                <div class="info-item">
-                    <div class="icon"><i class="fas fa-envelope"></i></div>
-                    <div class="details">
-                        <span class="label">Email</span>
-                        <span class="value">contato@naiane.dev</span>
-                    </div>
-                </div>
-                <div class="info-item">
-                    <div class="icon"><i class="fab fa-github"></i></div>
-                    <div class="details">
-                        <span class="label">GitHub</span>
-                        <span class="value">github.com/nianaine01sil-glitch</span>
-                    </div>
-                </div>
-                <div class="info-item">
-                    <div class="icon"><i class="fab fa-linkedin-in"></i></div>
-                    <div class="details">
-                        <span class="label">LinkedIn</span>
-                        <span class="value">linkedin.com/in/naiane</span>
-                    </div>
-                </div>
-                <div class="social-row">
-                    <a href="https://github.com/nianaine01sil-glitch" target="_blank" class="social-btn"><i class="fab fa-github"></i></a>
-                    <a href="#" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-btn"><i class="fab fa-twitter"></i></a>
+        <div class="container">
+            <h2 class="section-title">Contato</h2>
+            <div class="contact-grid">
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group"><input type="text" placeholder="Seu nome *" required></div>
+                    <div class="form-group"><input type="email" placeholder="Seu e-mail *" required></div>
+                    <div class="form-group"><textarea placeholder="Sua mensagem *" required></textarea></div>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Enviar Mensagem</button>
+                </form>
+                <div class="contact-info">
+                    <div class="contact-item"><div class="contact-icon"><i class="fas fa-envelope"></i></div><div><div class="contact-label">Email</div><div class="contact-value">contato@naiane.dev</div></div></div>
+                    <div class="contact-item"><div class="contact-icon"><i class="fab fa-github"></i></div><div><div class="contact-label">GitHub</div><div class="contact-value">github.com/nianaine01sil-glitch</div></div></div>
+                    <div class="contact-item"><div class="contact-icon"><i class="fab fa-linkedin-in"></i></div><div><div class="contact-label">LinkedIn</div><div class="contact-value">linkedin.com/in/naiane</div></div></div>
+                    <div style="margin-top: 1rem;"><div class="contact-label" style="margin-bottom: 0.8rem;">Redes Sociais</div><div class="social-hero" style="margin: 0;"><a href="https://github.com/nianaine01sil-glitch" target="_blank"><i class="fab fa-github"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-twitter"></i></a></div></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer>
-        <p>&copy; <span id="year"></span> Naiane • <span style="color: var(--gold);">✨ Rica em código e estilo</span></p>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links"><a href="#inicio">Início</a><a href="#projetos">Projetos</a><a href="#contato">Contato</a></div>
+            <p>&copy; <span id="year"></span> Naiane • <span style="color: var(--color-gold);">✨ Profissional & Rica em Código</span></p>
+        </div>
     </footer>
+
+    <div class="theme-panel" id="themePanel" style="display: none;">
+        <div class="theme-panel-header"><span>Escolha o Tema</span><button id="closeThemePanel">&times;</button></div>
+        <div class="theme-options">
+            <div class="theme-option active" data-value="luxury">Luxo</div>
+            <div class="theme-option" data-value="professional">Profissional</div>
+            <div class="theme-option" data-value="light">Claro</div>
+            <div class="theme-option" data-value="dark-elegant">Dark</div>
+            <div class="theme-option" data-value="vibrant">Vibrante</div>
+        </div>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // ===== Menu Mobile =====
+            // MENU MOBILE
             const menuBtn = document.getElementById('menuBtn');
             const navLinks = document.getElementById('navLinks');
-            menuBtn.addEventListener('click', () => {
+            menuBtn?.addEventListener('click', () => {
                 navLinks.classList.toggle('open');
                 menuBtn.textContent = navLinks.classList.contains('open') ? '✕' : '☰';
             });
-            navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-                navLinks.classList.remove('open'); menuBtn.textContent = '☰';
-            }));
-
-            // ===== Navbar Scroll =====
-            window.addEventListener('scroll', () => {
-                document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+            navLinks?.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => { navLinks.classList.remove('open'); menuBtn.textContent = '☰'; });
             });
 
-            // ===== 📷 TROCA DE FOTO COM PERSISTÊNCIA =====
+            // NAVBAR SCROLL
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 50));
+
+            // 📷 UPLOAD DE FOTO (persiste no localStorage)
             const photoInput = document.getElementById('photoInput');
             const profileImg = document.getElementById('profileImg');
-            const STORAGE_KEY = 'naiane_profile_photo';
+            const savedPhoto = localStorage.getItem('naiane_photo');
+            if (savedPhoto) profileImg.src = savedPhoto;
 
-            // Carregar foto salva
-            const savedPhoto = localStorage.getItem(STORAGE_KEY);
-            if (savedPhoto) {
-                profileImg.src = savedPhoto;
-            }
-
-            photoInput.addEventListener('change', function(e) {
+            photoInput?.addEventListener('change', function(e) {
                 const file = e.target.files[0];
-                if (file && file.type.startsWith('image/')) {
+                if (file?.type.startsWith('image/')) {
                     const reader = new FileReader();
-                    reader.onload = function(event) {
-                        // Efeito de fade
+                    reader.onload = (ev) => {
                         profileImg.style.opacity = '0';
                         setTimeout(() => {
-                            profileImg.src = event.target.result;
+                            profileImg.src = ev.target.result;
                             profileImg.style.opacity = '1';
-                            // Salvar no localStorage
-                            localStorage.setItem(STORAGE_KEY, event.target.result);
+                            localStorage.setItem('naiane_photo', ev.target.result);
                         }, 300);
                     };
                     reader.readAsDataURL(file);
                 }
             });
 
-            // ===== Efeito de Digitação =====
-            const words = ['elegância', 'performance', 'HTML', 'estilo ✨'];
-            let i = 0, j = 0, deleting = false;
+            // EFEITO DE DIGITAÇÃO
+            const words = ['elegância', 'performance', 'HTML', 'estilo ✨', 'resultados'];
+            let wi = 0, ci = 0, deleting = false;
             const typed = document.getElementById('typed');
             function type() {
-                typed.textContent = words[i].substring(0, j);
-                if (!deleting && j < words[i].length) j++;
-                else if (deleting && j > 0) j--;
-                else {
-                    deleting = !deleting;
-                    if (!deleting) i = (i + 1) % words.length;
-                    setTimeout(type, deleting ? 2000 : 300); return;
-                }
-                setTimeout(type, deleting ? 50 : 100);
+                typed.textContent = words[wi].substring(0, ci);
+                if (!deleting && ci < words[wi].length) ci++;
+                else if (deleting && ci > 0) ci--;
+                else { deleting = !deleting; if (!deleting) wi = (wi + 1) % words.length; setTimeout(type, deleting ? 1800 : 400); return; }
+                setTimeout(type, deleting ? 40 : 100);
             }
             type();
 
-            // ===== Animação Scroll (Projetos) =====
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(e => {
-                    if (e.isIntersecting) { e.target.classList.add('show'); observer.unobserve(e.target); }
-                });
-            }, { threshold: .15 });
-            document.querySelectorAll('.project-card').forEach(c => observer.observe(c));
+            // SCROLL ANIMATIONS
+            const fadeObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); fadeObserver.unobserve(entry.target); } });
+            }, { threshold: 0.15 });
+            document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
 
-            // ===== Contador Animado (Stats) =====
-            const statsObserver = new IntersectionObserver(entries => {
-                entries.forEach(e => {
-                    if (e.isIntersecting) {
-                        const el = e.target; const target = +el.dataset.target; let current = 0; const step = Math.ceil(target / 50);
-                        const interval = setInterval(() => {
-                            current += step;
-                            if (current >= target) { clearInterval(interval); current = target; }
-                            el.textContent = current + (target >= 100 ? '+' : '');
-                        }, 40);
+            // STATS COUNTER
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const el = entry.target; const target = +el.dataset.target; let current = 0; const step = Math.ceil(target / 40);
+                        const interval = setInterval(() => { current += step; if(current >= target) { clearInterval(interval); current = target; } el.textContent = current + (target >= 100 ? '+' : ''); }, 50);
                         statsObserver.unobserve(el);
                     }
                 });
-            }, { threshold: .6 });
-            document.querySelectorAll('.stat-card .num').forEach(el => statsObserver.observe(el));
+            }, { threshold: 0.6 });
+            document.querySelectorAll('.num').forEach(el => statsObserver.observe(el));
 
-            // ===== Formulário (Demo) =====
-            document.getElementById('contactForm').addEventListener('submit', e => {
+            // FORMULÁRIO
+            document.getElementById('contactForm')?.addEventListener('submit', (e) => {
                 e.preventDefault();
-                alert('✨ Mensagem enviada com sucesso! Naiane entrará em contato em breve.');
+                alert('✨ Mensagem enviada! Naiane responderá em breve.');
                 e.target.reset();
             });
 
-            // ===== Ano Dinâmico =====
+            // TEMA
+            const themeToggle = document.getElementById('themeToggle');
+            const themePanel = document.getElementById('themePanel');
+            const closeTheme = document.getElementById('closeThemePanel');
+            const themeOptions = document.querySelectorAll('.theme-option');
+            const html = document.documentElement;
+            const savedTheme = localStorage.getItem('naiane_theme') || 'luxury';
+            
+            html.setAttribute('data-theme', savedTheme);
+            themeOptions.forEach(opt => { if(opt.dataset.value === savedTheme) opt.classList.add('active'); });
+
+            themeToggle?.addEventListener('click', () => { themePanel.style.display = themePanel.style.display === 'none' ? 'flex' : 'none'; });
+            closeTheme?.addEventListener('click', () => { themePanel.style.display = 'none'; });
+            themeOptions.forEach(opt => {
+                opt.addEventListener('click', () => {
+                    html.setAttribute('data-theme', opt.dataset.value);
+                    localStorage.setItem('naiane_theme', opt.dataset.value);
+                    themeOptions.forEach(o => o.classList.remove('active'));
+                    opt.classList.add('active');
+                    themePanel.style.display = 'none';
+                });
+            });
+            document.addEventListener('click', (e) => {
+                if (themePanel.style.display === 'flex' && !themePanel.contains(e.target) && e.target !== themeToggle) themePanel.style.display = 'none';
+            });
+
+            // LINK ATIVO
+            window.addEventListener('scroll', () => {
+                let current = '';
+                document.querySelectorAll('section[id]').forEach(sec => {
+                    if (pageYOffset >= sec.offsetTop - 100) current = sec.getAttribute('id');
+                });
+                navLinks?.querySelectorAll('a').forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) link.classList.add('active');
+                });
+            });
+
             document.getElementById('year').textContent = new Date().getFullYear();
         });
     </script>
